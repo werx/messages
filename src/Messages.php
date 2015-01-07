@@ -5,7 +5,6 @@ namespace werx\Messages;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-use werx\Messages\Enums\Html;
 use werx\Messages\Enums\MessageType;
 
 class Messages
@@ -16,7 +15,7 @@ class Messages
 	public $session;
 
 	/**
-	 * @var \werx\Messages\DecoratorInterface $decorator
+	 * @var \werx\Messages\Decorators\DecoratorInterface $decorator
 	 */
 	public $decorator;
 
@@ -25,12 +24,19 @@ class Messages
 	 */
 	protected static $instance;
 
+	/**
+	 * @param SessionInterface $session
+	 */
 	protected function __construct(SessionInterface $session = null)
 	{
 		$this->session = $session;
 		$this->decorator = new Decorators\SimpleList;
 	}
 
+	/**
+	 * @param SessionInterface $session
+	 * @return Messages
+	 */
 	public static function getInstance(SessionInterface $session = null)
 	{
 		if (static::$instance == null) {
@@ -45,6 +51,9 @@ class Messages
 		return static::$instance;
 	}
 
+	/**
+	 * @param Decorators\DecoratorInterface $interface
+	 */
 	public static function setDecorator(Decorators\DecoratorInterface $interface = null)
 	{
 		if (empty($interface)) {
