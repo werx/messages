@@ -72,6 +72,14 @@ class Messages
 	}
 
 	/**
+	 * Remove any messages from the stack
+	 */
+	public static function delete()
+	{
+		static::$instance->session->remove('messages');
+	}
+
+	/**
 	 * Add an error message.
 	 * @param $message
 	 * @param mixed $data
@@ -131,7 +139,7 @@ class Messages
 			$messages = static::$instance->session->get('messages');
 
 			if ($delete === true) {
-				static::$instance->session->remove('messages');
+				static::delete();
 			}
 
 			if (empty($messages)) {

@@ -70,6 +70,24 @@ class MessagesTests extends \PHPUnit_Framework_TestCase
 		$this->assertCount(0, $all);
 	}
 
+	public function testCanDeleteMessages()
+	{
+		Messages::error('error');
+		Messages::info('info');
+		Messages::success('success');
+
+		$messages = Messages::all(false);
+
+		// We should have messages.
+		$this->assertFalse(empty($messages));
+
+		// After calling delete, messages should be empty array.
+		Messages::delete();
+		$messages = Messages::all(false);
+
+		$this->assertTrue(empty($messages));
+	}
+
 	/**
 	 * @expectedException \Exception
 	 * @expectedExceptionMessage Messages not initialized
