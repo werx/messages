@@ -2,6 +2,8 @@
 
 namespace werx\Messages\Decorators;
 
+use werx\Messages\Enums\MessageType;
+
 interface DecoratorInterface
 {
 	/**
@@ -9,5 +11,5 @@ interface DecoratorInterface
 	 * @param string $type
 	 * @return mixed
 	 */
-	public static function decorate($data = [], $type = Messages::MESSAGE_TYPE_INFO);
+	public static function decorate($data = [], $type = MessageType::INFO);
 }
