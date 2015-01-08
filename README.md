@@ -1,6 +1,6 @@
 # werx\messages
 
-[![Source](https://img.shields.io/badge/source-werx/messages-blue.svg?style=flat-square)](https://github.com/werx/messages) [![Build Status](https://img.shields.io/travis/werx/messages.svg?style=flat-square)](https://travis-ci.org/werx/messages) [![Total Downloads](https://img.shields.io/packagist/dt/werx/messages.svg?style=flat-square)](https://packagist.org/packages/werx/messages) [![Latest Stable Version](https://img.shields.io/packagist/v/werx/messages.svg?style=flat-square)](https://packagist.org/packages/werx/messages)
+[![Source](https://img.shields.io/badge/source-werx/messages-blue.svg?style=flat-square)](https://github.com/werx/messages) [![Build Status](https://img.shields.io/travis/werx/messages.svg?style=flat-square)](https://travis-ci.org/werx/messages) [![Total Downloads](https://img.shields.io/packagist/dt/werx/messages.svg?style=flat-square)](https://packagist.org/packages/werx/messages) [![Latest Stable Version](https://img.shields.io/github/tag/werx/messages.svg?label=version&style=flat-square)](https://packagist.org/packages/werx/messages)
 
 Simple package for displaying various types of messages in a web app.
 
