@@ -20,10 +20,27 @@ Messages::getInstance();
 Now you can add some messages. Valid messages types are error, info, and success.
 
 ```php
-Messages::error('Oops, something bad happened');
+Messages::error('Oops, something bad happened.');
 Messages::info('Nothing big, this is just a informational message.');
-Messages::success('Hooray! This is a success message');
+Messages::success('Hooray! This is a success message.');
 Messages::success('Here is another success message.');
+```
+
+You can also use `printf` compatible format codes in your message strings along with an array as the 2nd parameter containing string replacements to make it easier to embed dynamic data in your messages without doing a lot of string concatenation.
+
+```php
+Messages::error('The quick %s %s jumped over the %s.', ['brown', 'fox', 'log']);
+
+// The quick brown fox jumped over the log.
+```
+
+If you are only using one replacement, you can pass a string as the 2nd param instead of an array.
+
+
+```php
+Messages::error('The quick brown fox jumped over the %s.', 'lazy dog');
+
+// The quick brown fox jumped over the lazy dog.
 ```
 
 Once you've added the messages to the stack, you have a couple options.
@@ -86,9 +103,10 @@ By default, a simple decorator will be used that wraps the messages in a series 
 
 If you are using [Bootstrap](http://getbootstrap.com/) for your design, you can specify that messages should be decorated using the [Bootstrap Alert HTML Markup](http://getbootstrap.com/components/#alerts) instead.
 
+If you want to create your own decorator, just create a class that implements `werx\Messages\Decorators\DecoratorInterface` and pass an instance to `Messages::setDecorator()`.
 
 ```php
-Messages::setDecorator(new DecoratorBootstrap);
+Messages::setDecorator(new Decorators\Bootstrap);
 $display = Messages::display();
 print $display;
 ```
@@ -120,7 +138,9 @@ Renders:
 ```
 ## Sessions
 
-By default, this library will create a new instance of the Symfony Native Session Storage object for storage of messages. If you already have an instance of a Symfony Session Interface, you can pass that to `Messages::getInstance()`.
+By storing messages in session, they can persist across multiple page loads until you either display or delete them.
+
+By default, this library will create a new instance of the [Symfony Native Session Storage](http://api.symfony.com/2.6/Symfony/Component/HttpFoundation/Session/Storage/NativeSessionStorage.html) object for storage of messages. If you already have an instance of a Symfony Session Interface, you can pass that to `Messages::getInstance()`.
 
 ```php
 // Create a new session object.
