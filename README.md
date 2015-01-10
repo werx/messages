@@ -21,7 +21,7 @@ Now you can add some messages. Valid messages types are error, info, and success
 
 ```php
 Messages::error('Oops, something bad happened.');
-Messages::info('Nothing big, this is just a informational message.');
+Messages::info('Nothing big, this is just an informational message.');
 Messages::success('Hooray! This is a success message.');
 Messages::success('Here is another success message.');
 ```
@@ -56,17 +56,17 @@ Array
 (
     [error] => Array
         (
-            [0] => Oops, something bad happened
+            [0] => Oops, something bad happened.
         )
 
     [info] => Array
         (
-            [0] => Nothing big, this is just a informational message.
+            [0] => Nothing big, this is just an informational message.
         )
 
     [success] => Array
         (
-            [0] => Hooray! This is a success message
+            [0] => Hooray! This is a success message.
             [1] => Here is another success message.
         )
 
@@ -85,15 +85,15 @@ The above renders something like this:
 
 ```html
 <ul class="error">
-    <li>Oops, something bad happened</li>
+    <li>Oops, something bad happened.</li>
 </ul>
 
 <ul class="info">
-    <li>Nothing big, this is just a informational message.</li>
+    <li>Nothing big, this is just an informational message.</li>
 </ul>
 
 <ul class="success">
-    <li>Hooray! This is a success message</li>
+    <li>Hooray! This is a success message.</li>
     <li>Here is another success message.</li>
 </ul>
 ```
@@ -117,21 +117,21 @@ Renders:
 <div class="alert alert-danger">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <ul>
-        <li>Oops, something bad happened</li>
+        <li>Oops, something bad happened.</li>
     </ul>
 </div>
 
 <div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <ul>
-        <li>Nothing big, this is just a informational message.</li>
+        <li>Nothing big, this is just an informational message.</li>
     </ul>
 </div>
 
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <ul>
-        <li>Hooray! This is a success message</li>
+        <li>Hooray! This is a success message.</li>
         <li>Here is another success message.</li>
     </ul>
 </div>
