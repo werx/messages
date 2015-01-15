@@ -161,7 +161,7 @@ class Messages
 	{
 		if (is_array($data)) {
 			return vsprintf($message, $data);
-		} elseif (is_string($data)) {
+		} elseif (is_string($data) || is_int($data)) {
 			return sprintf($message, $data);
 		} else {
 			return $message;

@@ -102,17 +102,25 @@ class MessagesTests extends \PHPUnit_Framework_TestCase
 	public function testCanFormatArray()
 	{
 		$string = 'The %s brown %s jumped over the log';
-		$format = ['quick', 'fox'];
+		$data = ['quick', 'fox'];
 
-		$this->assertEquals('The quick brown fox jumped over the log', Messages::format($string, $format));
+		$this->assertEquals('The quick brown fox jumped over the log', Messages::format($string, $data));
 	}
 
 	public function testCanFormatString()
 	{
 		$string = 'The quick brown %s jumped over the log';
-		$format = 'fox';
+		$data = 'fox';
 
-		$this->assertEquals('The quick brown fox jumped over the log', Messages::format($string, $format));
+		$this->assertEquals('The quick brown fox jumped over the log', Messages::format($string, $data));
+	}
+
+	public function testCanFormatInt()
+	{
+		$string = 'The quick brown fox jumped over %s logs';
+		$data = 3;
+
+		$this->assertEquals('The quick brown fox jumped over 3 logs', Messages::format($string, $data));
 	}
 
 	public function testFormatEmptyPlaceholderShouldReturnOriginalString()
