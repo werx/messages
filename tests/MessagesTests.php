@@ -123,6 +123,22 @@ class MessagesTests extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('The quick brown fox jumped over 3 logs', Messages::format($string, $data));
 	}
 
+	public function testCanFormatFloat()
+	{
+		$string = 'The quick brown fox jumped over %s logs';
+		$data = 3.5;
+
+		$this->assertEquals('The quick brown fox jumped over 3.5 logs', Messages::format($string, $data));
+	}
+
+	public function testCanFormatObject()
+	{
+		$string = 'The quick brown %s jumped over the log';
+		$data = (object) ['fox'];
+
+		$this->assertEquals('The quick brown fox jumped over the log', Messages::format($string, $data));
+	}
+
 	public function testFormatEmptyPlaceholderShouldReturnOriginalString()
 	{
 		$string = 'The quick brown fox jumped over the log';

@@ -154,17 +154,19 @@ class Messages
 
 	/**
 	 * @param $message
-	 * @param null $data
+	 * @param mixed $data
 	 * @return string
 	 */
 	public static function format($message, $data = null)
 	{
-		if (is_array($data)) {
-			return vsprintf($message, $data);
-		} elseif (is_string($data) || is_int($data)) {
-			return sprintf($message, $data);
-		} else {
+		if (empty($data)) {
 			return $message;
+		} elseif (is_array($data)) {
+			return vsprintf($message, $data);
+		} elseif (is_object($data)) {
+			return vsprintf($message, (array) $data);
+		} else {
+			return sprintf($message, $data);
 		}
 	}
 
