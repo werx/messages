@@ -27,7 +27,6 @@ class Html
 		}
 
 		if (!empty($data)) {
-
 			if (!empty($class)) {
 				$out[] = sprintf('<ul class="%s">', $class);
 			} else {

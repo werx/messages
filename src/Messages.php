@@ -40,7 +40,6 @@ class Messages
 	public static function getInstance(SessionInterface $session = null)
 	{
 		if (static::$instance == null) {
-
 			if (empty($session)) {
 				$session = new Session(new NativeSessionStorage(['cookie_lifetime' => 604800]));
 			}
