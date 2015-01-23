@@ -154,6 +154,10 @@ Messages::getInstance($session);
 ## Installation
 This package is installable and autoloadable via Composer as [werx/messages](https://packagist.org/packages/werx/messages). If you aren't familiar with the Composer Dependency Manager for PHP, [you should read this first](https://getcomposer.org/doc/00-intro.md).
 
+```bash
+$ composer require werx/messages --prefer-dist
+```
+
 ## Contributing
 
 ### Unit Testing
