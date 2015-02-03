@@ -24,6 +24,9 @@ class Bootstrap implements DecoratorInterface
 			case MessageType::SUCCESS:
 				$class = 'alert alert-success';
 				break;
+			case MessageType::WARNING:
+				$class = 'alert alert-warning';
+				break;
 			default:
 				$class = 'alert alert-info';
 				break;

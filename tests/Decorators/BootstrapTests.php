@@ -39,6 +39,16 @@ class BootstrapTests extends \PHPUnit_Framework_TestCase
 		$this->assertRegExp('/message two/i', $result);
 	}
 
+	public function testDecorateWarningReturnsExpectedString()
+	{
+		$data = ['Message One', 'Message Two'];
+		$result = Decorators\Bootstrap::decorate($data, MessageType::WARNING);
+
+		$this->assertRegExp('/alert-warning/i', $result);
+		$this->assertRegExp('/message one/i', $result);
+		$this->assertRegExp('/message two/i', $result);
+	}
+
 	public function testDecoratorCastsStringToArray()
 	{
 		$data = 'Foo';

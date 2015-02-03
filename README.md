@@ -17,11 +17,12 @@ require '../vendor/autoload.php';
 Messages::getInstance();
 ```
 
-Now you can add some messages. Valid messages types are error, info, and success.
+Now you can add some messages. Valid messages types are error, info, warning, and success.
 
 ```php
 Messages::error('Oops, something bad happened.');
 Messages::info('Nothing big, this is just an informational message.');
+Messages::warning('A little more serious than info, but not quite an error.');
 Messages::success('Hooray! This is a success message.');
 Messages::success('Here is another success message.');
 ```
@@ -43,6 +44,15 @@ Messages::error('The quick brown fox jumped over the %s.', 'lazy dog');
 // The quick brown fox jumped over the lazy dog.
 ```
 
+Furthermore, you can add messages as an array:
+
+```php
+Messages::warning(['This is a warning.', 'This is also a warning']);
+
+// This is a warning.
+// This is also a warning.
+```
+
 Once you've added the messages to the stack, you have a couple options.
 
 1) Fetch all the messages back as an array.
@@ -56,18 +66,23 @@ Array
 (
     [error] => Array
         (
-            [0] => Oops, something bad happened.
+            [0] => Oops, something bad happened
         )
 
     [info] => Array
         (
-            [0] => Nothing big, this is just an informational message.
+            [0] => Nothing big, this is just a informational message.
         )
 
     [success] => Array
         (
-            [0] => Hooray! This is a success message.
+            [0] => Hooray! This is a success message
             [1] => Here is another success message.
+        )
+
+    [warning] => Array
+        (
+            [0] => A little more serious than info, but not quite an error.
         )
 
 )
@@ -86,6 +101,10 @@ The above renders something like this:
 ```html
 <ul class="error">
     <li>Oops, something bad happened.</li>
+</ul>
+
+<ul class="warning">
+    <li>A little more serious than info, but not quite an error.</li>
 </ul>
 
 <ul class="info">
@@ -119,6 +138,13 @@ Renders:
     <ul>
         <li>Oops, something bad happened.</li>
     </ul>
+</div>
+
+<div class="alert alert-warning">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<ul>
+		<li>A little more serious than info, but not quite an error.</li>
+	</ul>
 </div>
 
 <div class="alert alert-info">

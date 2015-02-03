@@ -109,6 +109,16 @@ class Messages
 	}
 
 	/**
+	 * Add a warning message.
+	 * @param $message
+	 * @param mixed $data
+	 */
+	public static function warning($message, $data = [])
+	{
+		static::add($message, MessageType::WARNING, $data);
+	}
+
+	/**
 	 * @param $message
 	 * @param string $type
 	 * @param mixed $data
@@ -120,10 +130,18 @@ class Messages
 		$messages = static::$instance->session->get('messages');
 
 		if (empty($messages)) {
-			$messages = [MessageType::ERROR => [], MessageType::INFO => [], MessageType::SUCCESS => []];
+			$messages = [MessageType::ERROR => [], MessageType::INFO => [], MessageType::SUCCESS => [], MessageType::WARNING => []];
 		}
 
-		$messages[$type][] = $message;
+		// allow for an array of messages or a string
+		if (is_array($message)) {
+			foreach ($message as $msg) {
+				$messages[$type][] = $msg;
+			}
+		} else {
+			$messages[$type][] = $message;
+		}
+
 		static::$instance->session->set('messages', $messages);
 	}
 
@@ -189,13 +207,16 @@ class Messages
 		$error = array_key_exists(MessageType::ERROR, $messages) ?
 			$decorator::decorate($messages[MessageType::ERROR], MessageType::ERROR) : '';
 
+		$warning = array_key_exists(MessageType::WARNING, $messages) ?
+			$decorator::decorate($messages[MessageType::WARNING], MessageType::WARNING) : '';
+
 		$info = array_key_exists(MessageType::INFO, $messages) ?
 			$decorator::decorate($messages[MessageType::INFO], MessageType::INFO) : '';
 
 		$success = array_key_exists(MessageType::SUCCESS, $messages) ?
 			$decorator::decorate($messages[MessageType::SUCCESS], MessageType::SUCCESS) : '';
 
-		return $error . "\n" . $info . "\n" . $success;
+		return $error . "\n" . $warning . "\n" . $info . "\n" . $success;
 	}
 
 	/**

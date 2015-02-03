@@ -19,6 +19,9 @@ class SimpleList implements DecoratorInterface
 			case MessageType::SUCCESS:
 				$class = 'success';
 				break;
+			case MessageType::WARNING:
+				$class = 'warning';
+				break;
 			default:
 				$class = 'info';
 				break;

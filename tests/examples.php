@@ -10,6 +10,7 @@ Messages::getInstance();
 
 Messages::error('Oops, something bad happened');
 Messages::info('Nothing big, this is just a informational message.');
+Messages::warning('A little more serious than info, but not quite an error.');
 Messages::success('Hooray! This is a success message');
 Messages::success('Here is another success message.');
 print_r(Messages::all());
@@ -17,6 +18,7 @@ print_r(Messages::all());
 
 Messages::error('Oops, something bad happened');
 Messages::info('Nothing big, this is just a informational message.');
+Messages::warning('A little more serious than info, but not quite an error.');
 Messages::success('Hooray! This is a success message');
 Messages::success('Here is another success message.');
 
@@ -26,6 +28,7 @@ print Messages::display();
 Messages::setDecorator(new \werx\Messages\Decorators\Bootstrap);
 Messages::error('Oops, something bad happened');
 Messages::info('Nothing big, this is just a informational message.');
+Messages::warning('A little more serious than info, but not quite an error.');
 Messages::success('Hooray! This is a success message');
 Messages::success('Here is another success message.');
 print Messages::display();

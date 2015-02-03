@@ -62,6 +62,43 @@ class MessagesTests extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('Foo', $all['success'][0]);
 	}
 
+	public function testCanAddWarning()
+	{
+		Messages::warning('Foo');
+
+		$all = Messages::all();
+
+		$this->assertArrayHasKey('warning', $all);
+		$this->assertEquals('Foo', $all['warning'][0]);
+	}
+
+	public function testCanAddArrayOfMessages()
+	{
+		Messages::success( ['Foo', 'Bar'] );
+
+		$all = Messages::all();
+
+		$this->assertArrayHasKey('success', $all);
+		$this->assertEquals('Foo', $all['success'][0]);
+		$this->assertEquals('Bar', $all['success'][1]);
+	}
+
+	public function testCanAddArrayOfMessagesDifferentTypes()
+	{
+		Messages::success( ['Foo', 'Bar'] );
+		Messages::error( ['Baz', 'Qux'] );
+
+		$all = Messages::all();
+
+		$this->assertArrayHasKey('success', $all);
+		$this->assertEquals('Foo', $all['success'][0]);
+		$this->assertEquals('Bar', $all['success'][1]);
+
+		$this->assertArrayHasKey('error', $all);
+		$this->assertEquals('Baz', $all['error'][0]);
+		$this->assertEquals('Qux', $all['error'][1]);
+	}
+
 	public function testNoMessagesReturnsEmptyArray()
 	{
 		$all = Messages::all();
@@ -75,6 +112,7 @@ class MessagesTests extends \PHPUnit_Framework_TestCase
 		Messages::error('error');
 		Messages::info('info');
 		Messages::success('success');
+		Messages::success('warning');
 
 		$messages = Messages::all(false);
 
