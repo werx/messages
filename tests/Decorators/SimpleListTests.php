@@ -39,6 +39,16 @@ class SimpleListTests extends \PHPUnit_Framework_TestCase
 		$this->assertRegExp('/\<li>Message Two\<\/li\>/', $result);
 	}
 
+	public function testDecorateWarningReturnsExpectedString()
+	{
+		$data = ['Message One', 'Message Two'];
+		$result = Decorators\SimpleList::decorate($data, MessageType::WARNING);
+
+		$this->assertRegExp('/\<ul class="warning">/', $result);
+		$this->assertRegExp('/\<li>Message One\<\/li\>/', $result);
+		$this->assertRegExp('/\<li>Message Two\<\/li\>/', $result);
+	}
+
 	public function testDecoratorCastsStringToArray()
 	{
 		$data = 'Message One';
