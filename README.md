@@ -47,7 +47,7 @@ Messages::error('The quick brown fox jumped over the %s.', 'lazy dog');
 Furthermore, you can add messages as an array:
 
 ```php
-Messages::warning(['This is a warning.', 'This is also a warning']);
+Messages::warning(['This is a warning.', 'This is also a warning.']);
 
 // This is a warning.
 // This is also a warning.
@@ -64,26 +64,26 @@ print_r($items);
 /*
 Array
 (
-    [error] => Array
-        (
-            [0] => Oops, something bad happened
-        )
+	[error] => Array
+		(
+			[0] => Oops, something bad happened.
+		)
 
-    [info] => Array
-        (
-            [0] => Nothing big, this is just a informational message.
-        )
+	[info] => Array
+		(
+			[0] => Nothing big, this is just an informational message.
+		)
 
-    [success] => Array
-        (
-            [0] => Hooray! This is a success message
-            [1] => Here is another success message.
-        )
+	[success] => Array
+		(
+			[0] => Hooray! This is a success message.
+			[1] => Here is another success message.
+		)
 
-    [warning] => Array
-        (
-            [0] => A little more serious than info, but not quite an error.
-        )
+	[warning] => Array
+		(
+			[0] => A little more serious than info, but not quite an error.
+		)
 
 )
 */
@@ -100,20 +100,20 @@ The above renders something like this:
 
 ```html
 <ul class="error">
-    <li>Oops, something bad happened.</li>
+	<li>Oops, something bad happened.</li>
 </ul>
 
 <ul class="warning">
-    <li>A little more serious than info, but not quite an error.</li>
+	<li>A little more serious than info, but not quite an error.</li>
 </ul>
 
 <ul class="info">
-    <li>Nothing big, this is just an informational message.</li>
+	<li>Nothing big, this is just an informational message.</li>
 </ul>
 
 <ul class="success">
-    <li>Hooray! This is a success message.</li>
-    <li>Here is another success message.</li>
+	<li>Hooray! This is a success message.</li>
+	<li>Here is another success message.</li>
 </ul>
 ```
 
@@ -134,10 +134,10 @@ Renders:
 
 ```html
 <div class="alert alert-danger">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <ul>
-        <li>Oops, something bad happened.</li>
-    </ul>
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<ul>
+		<li>Oops, something bad happened.</li>
+	</ul>
 </div>
 
 <div class="alert alert-warning">
@@ -148,18 +148,18 @@ Renders:
 </div>
 
 <div class="alert alert-info">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <ul>
-        <li>Nothing big, this is just an informational message.</li>
-    </ul>
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<ul>
+		<li>Nothing big, this is just an informational message.</li>
+	</ul>
 </div>
 
 <div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <ul>
-        <li>Hooray! This is a success message.</li>
-        <li>Here is another success message.</li>
-    </ul>
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<ul>
+		<li>Hooray! This is a success message.</li>
+		<li>Here is another success message.</li>
+	</ul>
 </div>
 ```
 ## Sessions
